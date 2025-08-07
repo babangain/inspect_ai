@@ -110,11 +110,11 @@ class HuggingFaceAPI(ModelAPI):
         # model
         if model_path:
             self.model: Any = AutoModelForCausalLM.from_pretrained(
-                model_path, device_map=self.device, token=self.api_key, **model_args
+                model_path, device_map=self.device, token=self.api_key,attn_implementation="eager", **model_args
             )
         else:
             self.model = AutoModelForCausalLM.from_pretrained(
-                model_name, device_map=self.device, token=self.api_key, **model_args
+                model_name, device_map=self.device, token=self.api_key,attn_implementation="eager", **model_args
             )
 
         # tokenizer
